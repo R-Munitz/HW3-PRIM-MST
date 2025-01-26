@@ -35,6 +35,21 @@ def check_mst(adj_mat: np.ndarray,
             total += mst[i, j]
     assert approx_equal(total, expected_weight), 'Proposed MST has incorrect expected weight'
 
+    #check that MST spans all nodes
+    connected_nodes = set()
+    for i in range(len(mst)):
+        for j in range(len(mst)):
+            if mst[i, j] > 0:  #if there is an edge between i and j
+                connected_nodes.add(i)
+                connected_nodes.add(j)
+    assert len(connected_nodes) == len(adj_mat), "MST does not span all nodes!"
+
+    # check that the MST has v-1 edges
+    #count number of edges in MST: 
+    num_edges = sum(sum(mst > 0)) // 2   #sum across rows and then sum across columns
+    assert num_edges == len(mst) - 1, "MST has incorrect number of edges"
+
+
 
 def test_mst_small():
     """
@@ -71,4 +86,7 @@ def test_mst_student():
     TODO: Write at least one unit test for MST construction.
     
     """
+    test_graph = Graph("data/student_test.csv") #choose more intersting example than a random small graph
+    test_graph.construct_mst()
+    check_mst(test_graph.adj_mat, test_graph.mst, 4) #What should allowed error be?
     pass
