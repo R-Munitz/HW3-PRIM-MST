@@ -86,7 +86,7 @@ def test_mst_student():
     TODO: Write at least one unit test for MST construction.
     
     """
-    test_graph = Graph("data/student_test.csv") #choose more intersting example than a random small graph
+    test_graph = Graph("data/student_test.csv") #choose more intersting example than a random small
     test_graph.construct_mst()
     check_mst(test_graph.adj_mat, test_graph.mst, 4) #What should allowed error be?
     pass
