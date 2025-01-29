@@ -144,13 +144,6 @@ def main(self):
     else:
         print("MST spans all nodes!")
 
-# testing my dolphin example
-    adj_noun_graph = nx.read_gml('./data/adjnoun.gml')
-    #convert to adjacency matrix
-    adj_mat = nx.to_numpy_array(adj_noun_graph)
-    #convert to csv file
-    np.savetxt('./data/adjnoun.csv', adj_mat, delimiter=',')
-
 
 if __name__ == "__main__":
     #create a graph object
