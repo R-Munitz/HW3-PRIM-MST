@@ -2,6 +2,7 @@ import numpy as np
 import heapq
 from typing import Union
 
+
 class Graph:
 
     def __init__(self, adjacency_mat: Union[np.ndarray, str]):
@@ -142,6 +143,13 @@ def main(self):
         print("MST does not span all nodes!")
     else:
         print("MST spans all nodes!")
+
+# testing my dolphin example
+    adj_noun_graph = nx.read_gml('./data/adjnoun.gml')
+    #convert to adjacency matrix
+    adj_mat = nx.to_numpy_array(adj_noun_graph)
+    #convert to csv file
+    np.savetxt('./data/adjnoun.csv', adj_mat, delimiter=',')
 
 
 if __name__ == "__main__":
