@@ -98,13 +98,14 @@ def test_mst_student():
     num_edges = np.sum(single_node_graph.mst > 0) // 2  # count undirected edges
     assert num_edges == 0, "MST should be empty for a single-node graph!"
     #check_mst(adj_mat, single_node_graph.mst, 0)
-    '''
+    
 
     #test on a graph with just two nodes
     adj_mat = np.array([[0, 1], [1, 0]])
     two_node_graph = Graph(adj_mat)
     two_node_graph.construct_mst()
     check_mst(adj_mat, two_node_graph.mst, 1)
+    '''
 
     #test on a graph with all zero weights
     adj_mat = np.zeros((5,5))
