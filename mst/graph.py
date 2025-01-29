@@ -56,7 +56,6 @@ class Graph:
         DECREASE-KEY(pq, v, ce). π[v] ← ce; pred[v] ← e.
     
         '''
-        
 
         #initialize mst adjancency matrix
         self.mst = np.zeros_like(self.adj_mat)
@@ -120,33 +119,3 @@ class Graph:
             weight = self.adj_mat[u, v] #get weight of edge between node u and v from adjacency matrix
             self.mst[u, v] = weight
             self.mst[v, u] = weight  #symmetric matrix
-        
-############################################
-
-def main(self):
-    print(self.adj_mat)
-    #random_ix = np.random.choice(len(self.adj_mat))
-    #print(self.adj_mat[random_ix])
-    #print(self.adj_mat[0][1])
-    self.construct_mst()
-    print("MST:")
-    print(self.mst)
- 
- #checking 
-    connected_nodes = set()
-    for i in range(len(self.mst)):
-        for j in range(len(self.mst)):
-            if self.mst[i, j] > 0:  # If there's an edge between i and j
-                connected_nodes.add(i)
-                connected_nodes.add(j)
-    if len(connected_nodes) != len(self.adj_mat):
-        print("MST does not span all nodes!")
-    else:
-        print("MST spans all nodes!")
-
-
-if __name__ == "__main__":
-    #create a graph object
-    graph = Graph("data/small.csv")
-    main(graph)
-    

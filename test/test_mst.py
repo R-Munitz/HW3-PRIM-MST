@@ -29,7 +29,7 @@ def check_mst(adj_mat: np.ndarray,
     def approx_equal(a, b):
         return abs(a - b) < allowed_error
 
-    total = 0
+    total = 0  
     for i in range(mst.shape[0]):
         for j in range(i+1):
             total += mst[i, j]
@@ -86,35 +86,9 @@ def test_mst_student():
     TODO: Write at least one unit test for MST construction.
     
     """
-
-    #test edge cases
-    '''
-    
-    #test on a graph with only one node
-    adj_mat = np.array([[0]])
-    single_node_graph = Graph(adj_mat)
-    single_node_graph.construct_mst()
-    # MST should have exactly one node and zero edges
-    num_edges = np.sum(single_node_graph.mst > 0) // 2  # count undirected edges
-    assert num_edges == 0, "MST should be empty for a single-node graph!"
-    #check_mst(adj_mat, single_node_graph.mst, 0)
-    
-
-    #test on a graph with just two nodes
-    adj_mat = np.array([[0, 1], [1, 0]])
-    two_node_graph = Graph(adj_mat)
-    two_node_graph.construct_mst()
-    check_mst(adj_mat, two_node_graph.mst, 1)
-    '''
-
-    #test on a graph with all zero weights
-    adj_mat = np.zeros((5,5))
-    zero_weight_graph = Graph(adj_mat)
-    zero_weight_graph.construct_mst()
-    check_mst(adj_mat, zero_weight_graph.mst, 0)
-    
-
-    #test_graph = Graph("data/student_test.csv") #choose more interesting example than a random small
-    #test_graph.construct_mst()
-    #check_mst(test_graph.adj_mat, test_graph.mst, 4) # fails. what is the expected weight of the MST? 
+    #test on a very simple graph with 4 nodes
+    test_graph = Graph("data/student_test.csv") 
+    test_graph.construct_mst()
+    check_mst(test_graph.adj_mat, test_graph.mst, 6) #manually worked through Prim's algorithm to calculate expected weight of MST
+    #0-1, with weight 1, 1-2, with weight 2, 2-3, with weight 3, all nodes visited. weight = 1+2+3 = 6
     pass
